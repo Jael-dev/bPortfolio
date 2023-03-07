@@ -2,7 +2,7 @@
 # See https://dart.dev/tools/pub/glossary#lockfile
 packages:
   algolia:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: algolia
       sha256: "0ba325344f85ac8f8351d158f0be0643e169ac0c91a43a496f8b1f3b54390066"
@@ -491,5 +491,5 @@ packages:
     source: hosted
     version: "1.0.0"
 sdks:
-  dart: ">=2.19.0 <4.0.0"
+  dart: ">=2.19.0 <3.0.0"
   flutter: ">=3.0.0"

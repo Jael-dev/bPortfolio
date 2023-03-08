@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_bonas/src/settings/settings_controller.dart';
 
 class BonasPortfolio extends ConsumerStatefulWidget {
-  const BonasPortfolio({super.key});
-
+  const BonasPortfolio(this.settingsController, {super.key});
+  final SettingsController settingsController;
 
 
   @override
@@ -14,6 +15,13 @@ class _BonasPortfolioState extends ConsumerState<BonasPortfolio> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return AnimatedBuilder(
+      animation: widget.settingsController, 
+      builder: (BuildContext context, Widget? child){
+        return MaterialApp.router(
+          restorationScopeId: 'app',
+          debugShowCheckedModeBanner: false,
+        );
+      });
   }
 }

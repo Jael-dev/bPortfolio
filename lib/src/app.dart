@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_bonas/src/router/guard/auth_guard.dart';
 import 'package:portfolio_bonas/src/settings/settings_controller.dart';
 
 class BonasPortfolio extends ConsumerStatefulWidget {
@@ -12,7 +13,7 @@ class BonasPortfolio extends ConsumerStatefulWidget {
 }
 
 class _BonasPortfolioState extends ConsumerState<BonasPortfolio> {
-
+  final AppRouter _appRouter = AppRouter(authGuard: AuthGuard());
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(

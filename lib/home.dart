@@ -8,35 +8,35 @@ import 'package:portfolio_bonas/src/widgets/app_bar.dart/desktop.dart';
 final key = GlobalKey<ScaffoldState>();
  final tabs = TabBar(tabs: <OnHover> [
     OnHover(builder: (isHovered){
-      final color = isHovered ? Colors.orange: Colors.white;
+      final color = isHovered ? Colors.orange: Colors.black;
       return Container(
         color: Colors.transparent,
         child: Text("Home", style: TextStyle(color: color),),
       );
     }),
     OnHover(builder: (isHovered){
-      final color = isHovered ? Colors.orange: Colors.white;
+      final color = isHovered ? Colors.orange: Colors.black;
       return Container(
         color: Colors.transparent,
         child: Text("About", style: TextStyle(color: color),),
       );
     }),
     OnHover(builder: (isHovered){
-      final color = isHovered ? Colors.orange: Colors.white;
+      final color = isHovered ? Colors.orange: Colors.black;
       return Container(
         color: Colors.transparent,
         child: Text("Portfolio", style: TextStyle(color: color),),
       );
     }),
     OnHover(builder: (isHovered){
-      final color = isHovered ? Colors.orange: Colors.white;
+      final color = isHovered ? Colors.orange: Colors.black;
       return Container(
         color: Colors.transparent,
         child: Text("Contact", style: TextStyle(color: color),),
       );
     }),
     OnHover(builder: (isHovered){
-      final color = isHovered ? Colors.orange: Colors.white;
+      final color = isHovered ? Colors.orange: Colors.black;
       return Container(
         color: Colors.transparent,
         child: Text("Blog", style: TextStyle(color: color),),

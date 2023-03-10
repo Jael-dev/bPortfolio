@@ -29,6 +29,7 @@ dependencies:
   cloud_firestore: ^4.4.4
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  video_player: ^2.6.0
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +46,7 @@ flutter:
   # Assets from the images directory of the application.
   assets:
     - assets/images/
+    - assets/videos/
     - assets/google_fonts/
 
   

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:portfolio_bonas/src/extensions/screens.dart';
 import 'package:portfolio_bonas/src/router/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -72,21 +73,19 @@ class _HomeState extends ConsumerState<Home> {
   // Variables
   late CarouselController carouselController;
   late VideoPlayerController _controller;
-  late Future<void> _initializeVideoPlayerFuture;
   int activeIndex = 0;
 
   @override
   void initState() {
     carouselController = CarouselController();
     _controller = VideoPlayerController.asset("man.mp4");
-    _initializeVideoPlayerFuture = _controller.initialize();
+    _controller.setVolume(0);
     super.initState();
   }
 
   @override
   void dispose() {
     _controller.dispose();
-
     super.dispose();
   }
 
@@ -94,8 +93,6 @@ class _HomeState extends ConsumerState<Home> {
   Widget build(BuildContext context) {
     return Stack(children: [
       CarouselSlider(
-
-        // todo: These items must be a list of objects.... So that the design will change depending on the device
           items: [
             "assets/images/ui.jpeg",
             "assets/images/developer.jpeg",
@@ -103,23 +100,8 @@ class _HomeState extends ConsumerState<Home> {
           ].map((e) {
             return Builder(builder: (BuildContext context) {
               return Container(
-                child: e.contains("mp4")
-                    ? FutureBuilder(
-                        future: _initializeVideoPlayerFuture,
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
-                            return AspectRatio(
-                              aspectRatio: _controller.value.aspectRatio,
-                              child: VideoPlayer(_controller),
-                            );
-                          } else {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          }
-                        },
-                      )
+                child: e.contains("videos")
+                    ? VideoPlayer(_controller)
                     : Image.asset(
                         e,
                         fit: BoxFit.cover,
@@ -130,23 +112,24 @@ class _HomeState extends ConsumerState<Home> {
           options: CarouselOptions(
               initialPage: 0,
               viewportFraction: 1,
-              // height: context.screenHeight * 0.5,
-              enableInfiniteScroll: false,
+              height: context.screenHeight,
+              enableInfiniteScroll: true,
               onPageChanged: (index, reason) {
                 setState(() => activeIndex = index);
               })),
-      AutoTabsScaffold(
-        scaffoldKey: key,
-        routes: const [DashBoard()],
-        builder: (context, child, animation) => Container(
-          child: child,
-        ),
-        appBarBuilder: (context, tabsRouter) {
-          return PreferredSize(
-              preferredSize: tabs.preferredSize,
-              child: NavBarBuilderDesk(tabsRouter, context, tabs));
-        },
-      ),
+      // AutoTabsScaffold(
+      //   backgroundColor: Colors.transparent,
+      //   scaffoldKey: key,
+      //   routes: const [DashBoard()],
+      //   builder: (context, child, animation) => Container(
+      //     child: child,
+      //   ),
+      //   appBarBuilder: (context, tabsRouter) {
+      //     return PreferredSize(
+      //         preferredSize: tabs.preferredSize,
+      //         child: NavBarBuilderDesk(tabsRouter, context, tabs));
+      //   },
+      // ),
     ]);
   }
 }

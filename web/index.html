@@ -47,8 +47,12 @@
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
+        onEntrypointLoaded: async function(engineInitializer) {
+          engineInitializer.initializeEngine().then(async function(appRunner)  {
+            let config = {
+              renderer: "html",
+            }
+            let appRunner = await engineInitializer.initializeEngine(config);
             appRunner.runApp();
           });
         }

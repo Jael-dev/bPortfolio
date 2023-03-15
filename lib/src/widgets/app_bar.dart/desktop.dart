@@ -21,13 +21,7 @@ class _NavBarBuilderDeskState extends ConsumerState<NavBarBuilderDesk>  {
           preferredSize: widget.tabs.preferredSize,
           child: SizedBox(
             height: 40,
-            child: Row(
-              children: [
-                const SizedBox(width: 50,),
-                widget.tabs,
-                const SizedBox(width: 50,),
-              ],
-            ),
+            child: widget.tabs,
           ),
         ),
       ),
